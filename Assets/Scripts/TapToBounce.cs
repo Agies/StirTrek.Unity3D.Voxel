@@ -5,24 +5,38 @@ using System.Collections;
 public class TapToBounce : MonoBehaviour {
     private Rigidbody ballRigidBody;
 
-    // Use this for initialization
-	void Start ()
+    void Start ()
 	{
         ballRigidBody = rigidbody;
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
+        if (Input.GetMouseButtonUp(0) && Input.GetMouseButtonUp(1))
+        {
+            Jump();
+            return;
+        }
+
+        //Left Mouse or First Touch
         if (Input.GetMouseButtonUp(0))
         {
-            Touch();
+            Push(-1);
         }
+        //Right Mouse or Second Touch
+        if (Input.GetMouseButtonUp(1))
+	    {
+	        Push(1);
+	    }
 	}
 
-    private void Touch()
+    private void Push(int direction)
     {
-        Debug.Log("Touched!");
+        ballRigidBody.AddForce(5 * direction, 0, 0, ForceMode.Force);
+    }
+
+    private void Jump()
+    {
         ballRigidBody.AddForce(0, 5, 0, ForceMode.VelocityChange);
     }
 }
