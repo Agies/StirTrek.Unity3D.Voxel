@@ -18,7 +18,7 @@ public class TapToBounce : MonoBehaviour {
 	    {
             Touch();
 	    }
-        if (Input.GetButton("Fire1"))
+        if (Input.GetMouseButtonUp(0))
         {
             Touch();
         }
@@ -27,6 +27,6 @@ public class TapToBounce : MonoBehaviour {
     private void Touch()
     {
         Debug.Log("Touched!");
-        ballRigidBody.AddForce(0, 1, 0, ForceMode.VelocityChange);
+        ballRigidBody.AddForce(0, 10, 0, ForceMode.VelocityChange);
     }
 }
