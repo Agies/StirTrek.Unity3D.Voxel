@@ -14,10 +14,6 @@ public class TapToBounce : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-	    if (Input.touchCount > 0)
-	    {
-            Touch();
-	    }
         if (Input.GetMouseButtonUp(0))
         {
             Touch();
@@ -27,6 +23,6 @@ public class TapToBounce : MonoBehaviour {
     private void Touch()
     {
         Debug.Log("Touched!");
-        ballRigidBody.AddForce(0, 10, 0, ForceMode.VelocityChange);
+        ballRigidBody.AddForce(0, 5, 0, ForceMode.VelocityChange);
     }
 }
