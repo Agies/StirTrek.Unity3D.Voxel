@@ -14,7 +14,7 @@ public class PolygonGenerator : MonoBehaviour
     
     public int squareCount;
     
-    private Vector2?[,] blocks;
+    private Vector2[,] blocks;
 
     private void Start()
     {
@@ -50,10 +50,8 @@ public class PolygonGenerator : MonoBehaviour
         }
     }
 
-    private void GenerateSquare(int x, int y, Vector2? tex)
+    private void GenerateSquare(int x, int y, Vector2 texture)
     {
-        if (tex == null) return;
-        var texture = tex.Value;
         newVertices.Add(new Vector3(x, y, 0));
         newVertices.Add(new Vector3(x + 1, y, 0));
         newVertices.Add(new Vector3(x + 1, y - 1, 0));
@@ -76,18 +74,18 @@ public class PolygonGenerator : MonoBehaviour
 
     private void GenerateTerrain()
     {
-        blocks = new Vector2?[20,8];
+        blocks = new Vector2[10,10];
         for (int px = 0; px < blocks.GetLength(0); px++)
         {
             for (int py = 0; py < blocks.GetLength(1); py++)
             {
                 if (py == 5)
                 {
-                    blocks[px, py] = new Vector2(1, Random.Range(0,4));
+                    blocks[px, py] = new Vector2(0, Random.Range(0,3));
                 }
                 else if (py < 5)
                 {
-                    blocks[px, py] = new Vector2(0, Random.Range(0, 4));
+                    blocks[px, py] = new Vector2(0, Random.Range(1, 3));
                 }
             }
         }
